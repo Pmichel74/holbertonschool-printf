@@ -33,7 +33,7 @@ while (*str != '\0')
 		str++;
 		if (*str == 'c')
 		{
-			char c = (char)va_arg(args, int);
+			c = (char)va_arg(args, int);
 
 			write(1, &c, 1);
 			count++;
