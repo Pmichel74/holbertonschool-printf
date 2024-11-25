@@ -2,17 +2,14 @@
 #include <unistd.h>
 #include "main.h"
 /**
-_printf - main function
-@format: const char format
- *
-Description: function that produces output according to a format.
-Return: Count of the charactere printed.
+ * _printf - main function
+ * @format: const char format
+ * Return: Count of the charactere printed.
  */
 int _printf(const char *format, ...)
 {
 va_list args;
-int count = 0;
-int i = 0;
+int count = 0; int i = 0;
 	va_start(args, format);
 	while (*format)
 	{
@@ -22,8 +19,7 @@ int i = 0;
 	if (*format == 'c')
 	{
 	char c = va_arg(args, int);
-	count += write(1, &c, 1);
-	}
+	count += write(1, &c, 1); }
 	else if (*format == 's')
 	{
 	char *str = va_arg(args, char *);
