@@ -27,7 +27,7 @@ char *s;
 va_list args;
 va_start(args, *format);
 
-while (*str != '\0')
+while (*str)
 {
 	if (*str == '%')
 	{
