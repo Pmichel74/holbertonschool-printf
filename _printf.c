@@ -24,7 +24,7 @@ char c;
 char *s;
 
 va_list args;
-va_start(args, *format);
+va_start(args, format);
 
 while (*str)
 {
