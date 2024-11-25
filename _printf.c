@@ -18,55 +18,51 @@
  */
 int _printf(const char *format, ...)
 {
-const char *str = format;
-int count = 0;
+int count = 0, i = 0;
 char c;
 char *s;
 
 va_list args;
 va_start(args, format);
 
-while (*str)
+while (format[count])
 {
-	if (*str == '%')
+	if (format[count] == '%')
 	{
-		str++;
-		if (*str == 'c')
+		count++;
+		if (format[count] == 'c')
 		{
 			c = (char)va_arg(args, int);
 
 			write(1, &c, 1);
-			count++;
 		}
-		else if (*str == 's')
+		else if (format[count] == 's')
 		{
 			s = va_arg(args, char*);
 			while (*s)
 			{
 				write(1, s, 1);
 				s++;
-				count++;
+				i++;
 			}
 		}
-		else if (*str == '%')
+		else if (format[count] == '%')
 		{
 			write(1, "%", 1);
-			count++;
 		}
 		else
 		{
 			write(1, "%", 1);
-			write(1, str, 1);
-			count += 2;
+			write(1, format, 1);
 		}
 	}
 	else
 	{
-		write(1, str, 1);
-		count++;
+		_putchar(format[count]);
 	}
-	str++;
-	}
+	count++;
+}
 	va_end(args);
+	count += i;
 	return (count);
 	}
