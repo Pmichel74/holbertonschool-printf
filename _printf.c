@@ -1,7 +1,6 @@
 #include "main.h"
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdio.h>
 
 /**
  * _printf - A simple implementation of a formatted output function.
@@ -19,42 +18,51 @@
  */
 int _printf(const char *format, ...)
 {
-int count = 0, j = 0;
-int (*f)(va_list);
-va_list args;
+int count = 0, i = 0;
+char c;
+char *s;
 
+va_list args;
 va_start(args, format);
-if (format == NULL || !format[count + 1])
-		return (-1);
+
 while (format[count])
 {
 	if (format[count] == '%')
 	{
-		if (format[count + 1])
+
+		if (format[count] == 'c')
+		{
+			c = (char)va_arg(args, int);
+
+			write(1, &c, 1);
+		}
+		else if (format[count] == 's')
+		{
+			s = va_arg(args, char*);
+			while (*s)
 			{
-				if (format[count + 1] != 'c' && format[count + 1] != 's'
-				&& format[count + 1] != '%' && format[count + 1] != 'd'
-				&& format[count + 1] != 'i')
-				{
-					j += _putchar(format[count]);
-					j += _putchar(format[count + 1]);
-					count++;
-				}
-				else
-				{
-					f = get_func(&format[count + 1]);
-					j += f(args);
-					count++;
-				}
+				write(1, s, 1);
+				s++;
+				i++;
 			}
+		}
+		else if (format[count] == '%')
+		{
+			write(1, "%", 1);
+		}
+		else
+		{
+			write(1, "%", 1);
+			write(1, format, 1);
+		}
 	}
 	else
 	{
-		putchar(format[count]);
-			j++;
-		}
-		count++;
+		_putchar(format[count]);
 	}
-	va_end(args);
-	return (j);
+	count++;
 }
+	va_end(args);
+	count += i;
+	return (count);
+	}
