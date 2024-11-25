@@ -54,6 +54,7 @@ while (format[count])
 		{
 			write(1, "%", 1);
 			write(1, format, 1);
+			count += 2;
 		}
 	}
 	else
