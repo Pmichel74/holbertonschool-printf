@@ -14,7 +14,6 @@ int count = 0; int i = 0;
 	while (*format)
 	{
 	if (*format == '%' && *(format + 1))
-	{
 	format++;
 	if (*format == 'c')
 	{
