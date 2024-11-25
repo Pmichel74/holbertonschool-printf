@@ -21,6 +21,7 @@ int _printf(const char *format, ...)
 {
 const char *str = format;
 int count = 0;
+char c;
 char *s;
 
 va_list args;
