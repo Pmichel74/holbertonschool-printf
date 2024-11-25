@@ -18,13 +18,11 @@ int i = 0;
 	{
 	format++;
 	if (*format == 'c')
-	{
-	char c = va_arg(args, int);
+	{ char c = va_arg(args, int);
 
 	count += write(1, &c, 1); }
 	else if (*format == 's')
-	{
-	char *str = va_arg(args, char *);
+	{ char *str = va_arg(args, char *);
 
 	for (i = 0; str && str[i]; i++)
 
