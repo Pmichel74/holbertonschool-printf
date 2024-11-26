@@ -22,5 +22,5 @@ int print_integer(va_list list)
 	/*Utiliser write pour afficher le contenu du buffer*/
 	write(1, buffer, len);
 
-    return len;
+    return (len);
 }
