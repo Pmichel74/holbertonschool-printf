@@ -8,12 +8,12 @@
  **/
 int print_binary(va_list list)
 {
-	char *p_buff;
+	char *value;
 	int size;
 
-	p_buff = itoa(va_arg(list, unsigned int), 2);
+	value = itoa(va_arg(list, unsigned int), 2); /* converts the unsigned integer into a string representation in binary base 2*/
 
-	size = print(p_buff);
+	size = print(value);
 
 	return (size);
 }

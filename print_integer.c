@@ -8,12 +8,16 @@
  **/
 int print_integer(va_list list)
 {
-	char *p_buff;
+	char *integer;
 	int size;
 
-	p_buff = itoa(va_arg(list, int), 10);
+	integer = itoa(va_arg(list, int), 10); /* converts the integer to a string in a base 10 */
 
-	size = print((p_buff != NULL) ? p_buff : "NULL");
+	if (integer != NULL)
+	size = print(integer);
+	else
+	size = print("NULL");
+
 
 	return (size);
 }

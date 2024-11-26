@@ -5,7 +5,7 @@
  * @format: character string. The format string
  * is composed of zero
  *
- * Return: The number of characters printed (excluding
+ * Return: The total number of characters printed (excluding
  * the null byte used to end output to strings)
  **/
 int _printf(const char *format, ...)
@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		return (0);
 
 	va_start(args, format);
-	size = handler(format, args);
+	size = handler(format, args); /* the total number of characters printed */
 
 	_putchar(-1);
 	va_end(args);
