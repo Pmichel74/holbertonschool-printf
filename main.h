@@ -5,16 +5,16 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-/* utilss.c */
-int _strlen(const char *);
+
+int _strlen(const char *); /* get the length of the format string */
 int print(char *);
 char *itoa(long int, int);
 
-/* printf.c */
+
 int _printf(const char *, ...);
 
-/* handler.c */
-int handler(const char *, va_list);
+
+int handler(const char *, va_list); /* Returns the total number of characters printed */
 int percent_handler(const char *, va_list, int *);
 
 /* printers */

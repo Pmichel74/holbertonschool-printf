@@ -3,7 +3,7 @@
 /**
  * _printf - Produces output according to a format
  * @format: character string. The format string
- * is composed of zero or more directives
+ * is composed of zero
  *
  * Return: The number of characters printed (excluding
  * the null byte used to end output to strings)
@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 
-	size = _strlen(format);
+	size = _strlen(format); /* get the length of the format string */
 	if (size <= 0)
 		return (0);
 

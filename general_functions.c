@@ -36,7 +36,7 @@ int handler(const char *str, va_list list)
 * percent_handler - Controller for percent format
 * @str: String format
 * @list: List of arguments
-* @i: Iterator
+* @i: count
 *
 * Return: Size of the numbers of elements printed
 **/
