@@ -10,9 +10,9 @@
  * @f: pointer-function associated with the argument
  */
 
-int _putchar(char c);
+/* int _putchar(char c); */
 int _printf(const char *format, ...);
-int print_integer(va_list);
+/* int print_integer(va_list);*/
 
 
 #endif
