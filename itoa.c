@@ -23,10 +23,11 @@ char *itoa(long int num, int base)
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	do      {
-		*--ptr = array[n % base];
-		n /= base;
-	} while (n != 0);
+while (n != 0)
+{
+    *--ptr = array[n % base];
+    n /= base;
+}
 
 	if (sign)
 		*--ptr = sign;
