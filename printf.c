@@ -19,7 +19,6 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	size = handler(format, args); /* the total number of characters printed */
 
-	_putchar(-1);
 	va_end(args);
 
 	return (size);

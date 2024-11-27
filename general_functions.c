@@ -2,30 +2,23 @@
 #include <unistd.h>
 
 /**
- * _putchar - Writes a single character to standard output.
- * @c: The character to be printed.
- */
-int _putchar(char c)
-{
-    return write(1, &c, 1);
-}
-
-/**
 * handler - main Format controller
 * @str: String format
 * @list: List of arguments
+* size: Total chars in the string
+* aux: Total chars of percent_handler
 *
-* Return: Total size of arguments with the total size of the base string
+* Return: Total size of arguments with the total size of the string
 **/
 int handler(const char *str, va_list list)
 {
 	int size, i, aux;
 
 	size = 0;
-	for (i = 0; str[i] != 0; i++)
+	for (i = 0; str[i] != 0; i++) /* scan the string */
 	{
 		if (str[i] == '%')
-		{
+		{    /* call the function percent handler */
 			aux = percent_handler(str, list, &i);
 			if (aux == -1)
 				return (-1);
@@ -46,13 +39,13 @@ int handler(const char *str, va_list list)
 * percent_handler - Controller for percent format
 * @str: String format
 * @list: List of arguments
-* @i: count
-*
+* @size: Store number of characters
+
 * Return: Size of the numbers of elements printed
-**/
-int percent_handler(const char *str, va_list list, int *i) /* formatting special characters preceded by '%' */
+*/
+int percent_handler(const char *str, va_list list, int *i)/* formatting special characters preceded by '%' */
 {
-	int size, j, number_formats;
+	int size, j, number_formats; /*number_formats: Number of specifiers in array @j: Index to array formats*/
 
 	format formats[] = {
 		{'s', print_string}, {'c', print_char},
@@ -71,7 +64,9 @@ int percent_handler(const char *str, va_list list, int *i) /* formatting special
 		return (1);
 	}
 
-	number_formats = sizeof(formats) / sizeof(formats[0]);
+	number_formats = sizeof(formats) / sizeof(formats[0]);/* how many specifiers to be checked */
+
+/*checks if current char in the format string matches the current format type*/
 	for (size = j = 0; j < number_formats; j++)
 	{
 		if (str[*i] == formats[j].type)
@@ -101,4 +96,13 @@ int print(char *str)
 		_putchar(str[i]);
 
 	return (i);
+}
+/**
+ * _putchar - Writes a single character to standard output.
+ * @c: The character to be printed.
+ * Return: On success 1, on error -1 is returned
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
