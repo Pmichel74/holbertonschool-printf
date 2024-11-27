@@ -11,7 +11,7 @@ int _putchar(char c)
 }
 
 /**
-* handler - Format controller
+* handler - main Format controller
 * @str: String format
 * @list: List of arguments
 *
@@ -50,7 +50,7 @@ int handler(const char *str, va_list list)
 *
 * Return: Size of the numbers of elements printed
 **/
-int percent_handler(const char *str, va_list list, int *i)
+int percent_handler(const char *str, va_list list, int *i) /* formatting special characters preceded by '%' */
 {
 	int size, j, number_formats;
 
@@ -86,22 +86,6 @@ int percent_handler(const char *str, va_list list, int *i)
 
 	return (2);
 }
-/**
- * _strlen - Calculate the length of a string
- * @str: String
- *
- * Return: Length
- **/
-/*int _strlen(const char *str)
-{
-	int i;
-
-	for (i = 0; str[i] != 0; i++)
-		;
-
-	return (i);
-}*/
-
 /**
  * print - print char.
  * @str: string.

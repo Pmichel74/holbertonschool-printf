@@ -27,8 +27,8 @@ char *itoa(long int, int); /*  convert an integer to a string */
 int _printf(const char *, ...);
 
 
-int handler(const char *, va_list); /* Returns the total number of characters printed */
-int percent_handler(const char *, va_list, int *);
+int handler(const char *, va_list); /* Main overall chain structure and format specifiers */
+int percent_handler(const char *, va_list, int *);/* handles only format specifiers (like %s, %d) */
 
 
 int print_string(va_list); /* print string in a variadic function */
