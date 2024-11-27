@@ -92,7 +92,7 @@ int percent_handler(const char *str, va_list list, int *i)
  *
  * Return: Length
  **/
-int _strlen(const char *str)
+/*int _strlen(const char *str)
 {
 	int i;
 
@@ -100,7 +100,7 @@ int _strlen(const char *str)
 		;
 
 	return (i);
-}
+}*/
 
 /**
  * print - print char.

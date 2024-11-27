@@ -16,9 +16,9 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 
-	size = _strlen(format); /* get the length of the format string */
-	if (size <= 0)
-		return (0);
+	/*size = _strlen(format);*/ /* get the length of the format string */
+	/*if (size <= 0)
+		return (0);*/
 
 	va_start(args, format);
 	size = handler(format, args); /* the total number of characters printed */
