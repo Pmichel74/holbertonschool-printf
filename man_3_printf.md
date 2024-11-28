@@ -1,6 +1,5 @@
 # My man page _Printf
 - _printf \- Produce Output According To A Specified Format
-##Synopsis
 - include "main.h"
 - int _printf(const char *format, ...);
 ##Description
