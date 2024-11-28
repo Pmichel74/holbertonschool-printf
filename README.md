@@ -200,13 +200,17 @@ int main() {
     _printf("Integer: %d\n", 123);
     return 0;
 }
+
+
+
 ## See also
 - printf (3)
 ## Author
 Patrick Michel And Matteo Foti
 
-```- 
-
+```
+## Flowchart
+![Flowchart](img/flotchart.jpg)
 
 ## Author
 **Patrick Michel And Matteo Foti**
