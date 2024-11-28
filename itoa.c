@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * itoa - integer to ascii
+ * itoa - integer to ASCII
  * @num: num
  * @base: base
  *

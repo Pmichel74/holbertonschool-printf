@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _printf - Produces output according to a format
+ * _printf - produce formatted output based on a format string
  * @format: character string. The format string
  * is composed of zero
  *

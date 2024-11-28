@@ -6,10 +6,10 @@
 #include <stdarg.h>
 
 /**
-* struct _format - Typedef struct
+* struct _format - Structure that associates a format type with a print function.
 *
-* @type: Format
-* @f: The function associated
+* @type: Format type ('c','d'...)
+* @f: A pointer to a function that takes va_list as an argument & returns an int
 **/
 typedef struct _format
 {
@@ -19,7 +19,6 @@ typedef struct _format
 } format;
 
 
-int _strlen(const char *); /* get the length of the format string */
 int print(char *);
 char *itoa(long int, int); /*  convert an integer to a string */
 
@@ -39,6 +38,5 @@ int print_binary(va_list);
 
 
 int _putchar(char);
-int buffer(char);
 
 #endif
