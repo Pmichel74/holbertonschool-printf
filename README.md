@@ -1,217 +1,252 @@
-#  _PRINTF:
+# 🖨️ Custom Printf Implementation
+
+[![C](https://img.shields.io/badge/Language-C-blue?style=for-the-badge&logo=c)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![Standard](https://img.shields.io/badge/Standard-C89-red?style=for-the-badge)](https://en.wikipedia.org/wiki/ANSI_C)
+[![Holberton](https://img.shields.io/badge/School-Holberton-orange?style=for-the-badge)](https://www.holbertonschool.com/)
+[![Betty](https://img.shields.io/badge/Style-Betty-green?style=for-the-badge)](https://github.com/holbertonschool/Betty)
+
 ![printf](img/prnt.png)
 
-```c
-- Int _printf(Const Char *Format, ...);
-```
-### Purpose:
-- Mimics The Standard Printf Functionality.
--  the function receives a format (const char *format) and a list of arguments (the magic of variadic functions). So printf inside, take the string format and search for specific patterns, then the pattern that was found it is passed to other function that prints the match pattern
-### Parameters:
-- Format: A String That Specifies How To Format The Output.
-- ...: A Variable Number Of Arguments Corresponding To Format Specifiers.
-### Returns:
-- The Total Number Of Characters Printed, Or -1 If An Error Occurs.
+## 📋 Table of Contents
+- [Overview](#-overview)
+- [Features](#-features)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Format Specifiers](#-format-specifiers)
+- [Function Architecture](#-function-architecture)
+- [Testing](#-testing)
+- [Project Structure](#-project-structure)
+- [Authors](#-authors)
 
-## Compil command
-```c
-- gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o print
-- ./print
-```
-## Requirements
-- Ubuntu 20.04 LTS
-- Vi, vim, emacs
-- GCC (GNU Compiler Collection)
-- Git, Github
-- Betty style.pl and Betty-doc.pl
-- Readme.md
+## 🎯 Overview
 
+This project is a custom implementation of the famous `printf()` function from the C standard library. Created as part of the Holberton School curriculum, it demonstrates deep understanding of variadic functions, format string parsing, and low-level output operations in C.
 
-## HANDLER:
+### 🚀 What is _printf?
+
 ```c
-- Int Handler(Const Char *Str, Va_list List);
+int _printf(const char *format, ...);
 ```
-### Purpose:
-- Processes The Format String And Handles Different Specifiers.
-### Parameters:
-- Str: The Format String.
-- List: The List Of Arguments.
-### Returns:
-- Total Size Of Printed Characters.
-## PERCENT_HANDLER:
-```c
-- Int Percent_handler(Const Char *Str, Va_list List, Int *I);
+
+Our `_printf` function produces formatted output according to a format string and prints it to the standard output. It mimics the behavior of the standard `printf()` function while being implemented from scratch.
+
+## ✨ Features
+
+- ✅ **Variadic Function Implementation** - Handles variable number of arguments
+- ✅ **Multiple Format Specifiers** - Supports characters, strings, integers, and more
+- ✅ **Memory Safe** - No memory leaks (validated with Valgrind)
+- ✅ **Betty Compliant** - Follows Holberton School's Betty coding standards
+- ✅ **Error Handling** - Robust error detection and handling
+- ✅ **Custom Binary Conversion** - Includes custom %b specifier for binary output
+
+## 🔧 Requirements
+
+| Component | Specification |
+|-----------|---------------|
+| **OS** | Ubuntu 20.04 LTS |
+| **Compiler** | GCC with flags: `-Wall -Werror -Wextra -pedantic -std=gnu89` |
+| **Standard** | C89/C90 |
+| **Style** | Betty coding style |
+| **Memory** | No leaks allowed |
+
+## 📦 Installation
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Pmichel74/holbertonschool-printf.git
+cd holbertonschool-printf
 ```
-### Purpose:
-- Handles Specific Format Specifiers Starting With '%'.
-### Parameters:
-- Str: The Format String.
-- List: The List Of Arguments.
-- I: Pointer To The Current Index In The String.
-### Returns:
-- Number Of Characters Printed For This Specifier.
-## HELPER FUNCTIONS:
-## _Putchar:
-```c
-- Int _putchar(Char C);
+
+### 2. Compile the Project
+```bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o print
 ```
-### Purpose:
-- Writes A Single Character To Standard Output.
-### Supported Format Specifiers:
-- %C: Character
-- %D And %I: Integer
-- %S: Used for handling strings (character arrays).
-- %%: Used to print a literal percent sign.
-- %B: In some extended versions of printf for binary output.
-### Usage Example:
+
+### 3. Run the Program
+```bash
+./print
+```
+
+## 🎮 Usage
+
+### Basic Example
 ```c
-- #include "main.h"
+#include "main.h"
+
 int main(void)
 {
-_printf("Hello %s! Number: %d\n", "World", 42);
-return (0);
-}
-```
-## _Print:
-```c
-- int print(char *str);
-```
-### Purpose:
-- Return: string length.
-### Parameters:
-- char *str: A pointer to an array of characters (string) that should be printed. This pointer must point to a null-terminated string.
-### Returns:
-- The function returns an integer (int) representing the length of the string, i.e., the number of characters in the string before the null terminator.
-### Usage example:
-```c 
-#include <stdio.h>
-
-int print(char *str);
-
-int main() {
-char message[] = "Hello, World!";
-int length = print(message);
-printf("The length of the string is: %d\n", length);
-return 0;
-}
-
-int print(char *str) {
-int length = 0;
-while (*str != '\0') {
-putchar(*str);
-str++;
-length++;
-}
-putchar('\n'); // To add a newline after printing
-return length;
-}
-```
-### Code Explanation:
-- 1: Initialization: The function starts by initializing a length variable to zero. This variable will be used to count the number of characters in the string.
-- 2: While Loop: The while loop iterates through each character of the string until it encounters the null character ('\0'). For each iteration:
-- The current character is displayed using putchar.
-- The str pointer is incremented to move to the next character.
-- The length variable is incremented to count the displayed character.
-- 3: Newline: After traversing the entire string, a newline is added to separate outputs.
-- 4: Return: The function returns the total length of the string.
-
-
--This Implementation Supports Basic Formatting For Characters, Strings, And Integers, Providing A Foundational Understanding Of How Formatted Output Works In C.
- 
-## Testing
-**Memory check with Valgrind**
-```c
-==293287== Memcheck, a memory error detector
-==293287== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==293287== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==293287== Command: ./print
-==293287== 
-Let's try to printf a simple sentence.
-Let's try to printf a simple sentence.
-binary:1100010
-Length:[39, 39]
-Length:[39, 39]
-Negative:[-762534]
-Negative:[-762534]
-Unsigned:[%u]
-Unsigned:[2147484671]
-Unsigned octal:[%o]
-Unsigned octal:[20000001777]
-Unsigned hexadecimal:[%x, %X]
-Unsigned hexadecimal:[800003ff, 800003FF]
-Character:[H]
-Character:[H]
-String:[I am a string !]
-String:[I am a string !]
-Address:[%p]
-Address:[0x7ffe637541f0]
-Percent:[%]
-Percent:[%]
-Len:[12]
-Len:[12]
-Unknown:[%r]
-Unknown:[%r]
-==293287== 
-==293287== HEAP SUMMARY:
-==293287==     in use at exit: 0 bytes in 0 blocks
-==293287==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
-==293287== 
-==293287== All heap blocks were freed -- no leaks are possible
-==293287== 
-==293287== For lists of detected and suppressed errors, rerun with: -s
-==293287== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-```
-## Man Page
-
-**Command to execute Man Page: man ./man_3_printf**
-```c
-# My man page _Printf
-- _printf \- Produce Output According To A Specified Format
-- include "main.h"
-- int _printf(const char *format, ...);
-##Description
-- **_printf**
-- is a custom function that produces output according to a specified format. It writes output to the standard output stream, stdout.
-- **format**
-- parameter is a character string composed of zero or more directives. The following conversion specifiers are supported:
-- **%c**
-- prints a single chararcter
-- **%s**
-- prints a string of characters.
-- **%%**
-- prints a literal '%' character.
-- **%d, %i**
-- prints a signed decimal integer.
-- The function does not handle the following:
-- Buffer handling as in the C library printf function.
-- Flag characters.
-- Field width.
-- Precision.
-- Length modifiers.
-The function uses an internal buffer to optimize character writing. The buffer is flushed either when its maximum capacity is reached or at the end of execution.
-## Return value
-- The function returns the number of characters printed (excluding the null byte used to end output to strings).
-## Examples
-- include "main.h"
-int main() {
+    _printf("Hello %s! Number: %d\n", "World", 42);
     _printf("Character: %c\n", 'A');
-    _printf("String: %s\n", "Hello, World!");
-    _printf("Percent: %%\n");
-    _printf("Integer: %d\n", 123);
-    return 0;
+    _printf("Percentage: %%\n");
+    return (0);
 }
+```
 
+### Output
+```
+Hello World! Number: 42
+Character: A
+Percentage: %
+```
 
+## 🔤 Format Specifiers
 
-## See also
-- printf (3)
-## Author
-Patrick Michel And Matteo Foti
+| Specifier | Description | Example |
+|-----------|-------------|---------|
+| `%c` | Single character | `_printf("%c", 'A')` → `A` |
+| `%s` | String of characters | `_printf("%s", "Hello")` → `Hello` |
+| `%d` | Signed decimal integer | `_printf("%d", 123)` → `123` |
+| `%i` | Signed integer | `_printf("%i", -456)` → `-456` |
+| `%b` | Binary representation | `_printf("%b", 98)` → `1100010` |
+| `%%` | Literal percent sign | `_printf("%%")` → `%` |
+
+## 🏗️ Function Architecture
+
+### Core Functions
+
+#### `_printf(const char *format, ...)`
+**Purpose:** Main entry point that processes format string and coordinates output.
+
+**Parameters:**
+- `format`: Format string containing text and format specifiers
+- `...`: Variable arguments corresponding to format specifiers
+
+**Returns:** Total number of characters printed, or -1 on error.
+
+---
+
+#### `handler(const char *str, va_list list)`
+**Purpose:** Processes the format string and dispatches to appropriate handlers.
+
+**Parameters:**
+- `str`: The format string
+- `list`: The variadic argument list
+
+**Returns:** Total number of characters printed.
+
+---
+
+#### `percent_handler(const char *str, va_list list, int *i)`
+**Purpose:** Handles format specifiers that start with '%'.
+
+**Parameters:**
+- `str`: The format string
+- `list`: The variadic argument list  
+- `i`: Pointer to current position in format string
+
+**Returns:** Number of characters printed for this specifier.
+
+### Helper Functions
+
+| Function | Purpose |
+|----------|---------|
+| `print_char(va_list)` | Prints a single character |
+| `print_string(va_list)` | Prints a string |
+| `print_integer(va_list)` | Prints signed integers |
+| `print_binary(va_list)` | Prints binary representation |
+| `_putchar(char)` | Writes single character to stdout |
+| `itoa(long int, int)` | Converts integer to string |
+
+## 🧪 Testing
+
+### Compilation for Testing
+```bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c test/main.c -o test_printf
+```
+
+### Memory Leak Testing with Valgrind
+```bash
+valgrind --leak-check=full --show-leak-kinds=all ./print
+```
+
+### Expected Valgrind Output
+```
+==XXXXX== HEAP SUMMARY:
+==XXXXX==     in use at exit: 0 bytes in 0 blocks
+==XXXXX==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+==XXXXX== 
+==XXXXX== All heap blocks were freed -- no leaks are possible
+==XXXXX== 
+==XXXXX== ERROR SUMMARY: 0 errors from 0 contexts
+```
+
+### Test Cases Coverage
+- ✅ Basic format specifiers (%c, %s, %d, %i)
+- ✅ Edge cases (NULL strings, negative numbers)
+- ✅ Special specifiers (%%, %b)
+- ✅ Memory management
+- ✅ Return value accuracy
+
+## 📁 Project Structure
 
 ```
-## Flowchart
+holbertonschool-printf/
+├── 📄 main.h                  # Header file with function prototypes
+├── 📄 printf.c               # Main printf implementation
+├── 📄 general_functions.c    # Handler functions and utilities
+├── 📄 print_char.c           # Character printing function
+├── 📄 print_string.c         # String printing function  
+├── 📄 print_integer.c        # Integer printing function
+├── 📄 print_binary.c         # Binary printing function
+├── 📄 itoa.c                 # Integer to string conversion
+├── 📄 man_3_printf.md        # Manual page
+├── 📁 test/                  # Test files
+│   └── 📄 main.c            # Test cases
+├── 📁 img/                   # Documentation images
+│   ├── 📄 prnt.png          # Project banner
+│   └── 📄 flowchart.jpg     # Function flowchart
+└── 📄 README.md              # This file
+```
+
+## 📊 Function Flow
+
 ![Flowchart](img/flotchart.jpg)
 
-## Author
-**Patrick Michel And Matteo Foti**
+The flowchart above illustrates the execution flow of our `_printf` implementation, showing how format strings are parsed and processed.
 
+## 📖 Manual Page
+
+To view the detailed manual page:
+```bash
+man ./man_3_printf.md
+```
+
+The manual page includes:
+- Detailed function descriptions
+- Parameter specifications
+- Return value explanations
+- Usage examples
+- Compatibility notes
+
+## 🤝 Contributing
+
+This project follows the Holberton School Betty coding style. Contributions should:
+
+1. Follow Betty style guidelines
+2. Include appropriate comments
+3. Pass all existing tests
+4. Include tests for new features
+
+## 📜 License
+
+This project is part of the Holberton School curriculum and is intended for educational purposes.
+
+## 👥 Authors
+
+| Author | GitHub | Email |
+|--------|--------|-------|
+| **Patrick Michel** | [@Pmichel74](https://github.com/Pmichel74) | patrick.yann.michel@gmail.com |
+| **Matteo Foti** | [@MatteoFoti](https://github.com/MatteoFoti) | - |
+
+---
+
+<div align="center">
+
+**🎓 Holberton School - Cohort 21**
+
+*Learning to code by building real projects*
+
+[![Holberton](https://img.shields.io/badge/Made%20at-Holberton%20School-orange?style=for-the-badge)](https://www.holbertonschool.com/)
+
+</div>
