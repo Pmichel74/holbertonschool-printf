@@ -243,7 +243,7 @@ This project is part of the Holberton School curriculum and is intended for educ
 
 <div align="center">
 
-**🎓 Holberton School - Cohort 21**
+**🎓 Holberton School - Cohort 25**
 
 *Learning to code by building real projects*
 
